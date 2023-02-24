@@ -5,18 +5,10 @@ import java.util.Scanner;
 //확인 필요
 public class Main {
 	
-	public String solution(String longer, String compare) {
+	public String solution(String input) {
 		
-		longer = longer.length()>=compare.length() ? longer : compare;
-		return longer;
-	}
-
-	public static void main(String[] args) {
 		
-		Main main = new Main();
-		Scanner scan = new Scanner(System.in);
-		String input = scan.next();
-		String longer="";
+		String longer = "";
 		
 		if(input.length()>=99) input = input.substring(0,100);
 		
@@ -24,11 +16,19 @@ public class Main {
 		
 		for(int i=0;i<inputArray.length-1;i++) {
 			if(i==0) longer = inputArray[0];
-			
-			longer = main.solution(longer,inputArray[i+1]);
+			longer = longer.length()>=inputArray[i+1].length() ? longer : inputArray[i+1];
 		}
+		return longer;
+	}
+
+	public static void main(String[] args) {
 		
-		System.out.println(longer);
+		Main main = new Main();
+		Scanner scan = new Scanner(System.in);
+		String input = scan.nextLine();
+		
+		 
+		System.out.println(main.solution(input));
 	}
 
 }
